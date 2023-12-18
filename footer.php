@@ -144,7 +144,8 @@ foreach ($result as $row) {
     $stripe_secret_key = $row['stripe_secret_key'];
 }
 ?>
-
+<!-- Thêm mã JavaScript reCAPTCHA v2 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="assets/js/jquery-2.2.4.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://js.stripe.com/v2/"></script>

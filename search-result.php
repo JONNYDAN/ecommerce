@@ -56,7 +56,7 @@ foreach ($result as $row) {
             $limit = 12;                                 //how many items to show per page
             $page = @$_GET['page'];
             if($page) 
-                $start = ($page - 1) * $limit;          //first item to display on this page
+                $start = ($page - 1) * $limit;          //first item to display on t    his page
             else
                 $start = 0;
             
@@ -64,8 +64,38 @@ foreach ($result as $row) {
             $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? AND p_name LIKE ? LIMIT $start, $limit");
             $statement->execute(array(1,$search_text));
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-           
+
+            // $adjacents = 5;
+
+            // $mysqli = new mysqli("localhost", "root", "", "ecommerceweb");
             
+            // if ($mysqli->connect_error) {
+            //     die("Kết nối đến cơ sở dữ liệu thất bại: " . $mysqli->connect_error);
+            // }
+            
+            // $isActive = 1;
+            // $searchText = '%' .$searchText. '%';
+            
+            // // Count total rows
+            // $totalPagesQuery = "SELECT COUNT(*) as total FROM tbl_product WHERE p_is_active=$isActive AND p_name LIKE '$searchText'";
+            // $totalPagesResult = $mysqli->query($totalPagesQuery);
+            // $total_pages = $totalPagesResult->fetch_assoc()['total'];
+            
+            // $targetpage = BASE_URL . 'search-result.php?search_text=' . $_REQUEST['search_text'];
+            // $limit = 12;
+            // $page = @$_GET['page'];
+            // $start = (($page ?? 1) - 1) * $limit;
+            
+            // // Fetch data
+            // $query = "SELECT * FROM tbl_product WHERE p_is_active=$isActive AND p_name LIKE '$searchText' LIMIT $start, $limit";
+            // $result = $mysqli->query($query);
+            // $data = $result->fetch_all(MYSQLI_ASSOC);
+            
+            // $mysqli->close();
+
+            
+
+
             if ($page == 0) $page = 1;                  //if no page var is given, default to 1.
             $prev = $page - 1;                          //previous page is page - 1
             $next = $page + 1;                          //next page is page + 1
